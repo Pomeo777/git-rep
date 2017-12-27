@@ -13,18 +13,26 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import system.ua.roman.configure.DBConnector;
+import system.ua.roman.entity.Writter;
 
-@Service
-public class DAOWritter {
-	
-	//private String fileName;
-	
-	
+
+/**
+ * @author Pomeo
+ *
+ * class for the add, change, delete of Disease or another action in DB
+ * 				in the future will have different methods
+ * 
+ * class is Spring bean 
+ */
+@Component
+public class DAOWritter implements Writter{
+
 	Connection connection;
 	
+	// call of constructor creates DB connection used JDBC 
 	public DAOWritter() {
 			DBConnector con = DBConnector.getInstanse();		
 		try {
@@ -37,14 +45,20 @@ public class DAOWritter {
 		}
 	}
 	
-	
+	/* 
+	*  fileName parameter is title of file, where is an information about a Disease
+	*  this parameters also is Disease title
+	*  method add Disease title and information from file in table "disease" in DB.
+	*  the console outputs are  for control
+	*/
+	@Override
 	public void writte( String fileName) {
 		File file = new File("C:\\Tools\\Disease\\" + fileName+ ".txt");
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))); 
 				PreparedStatement st =  this.connection.prepareStatement("INSERT INTO disease (name, context) values (?,?)")) {
 			
 			long size = file.length();
-			System.out.println("connection");
+				System.out.println("connection");
 				st.setString(1,fileName);	
 				System.out.println("name");
 				st.setCharacterStream(2, br, (int) size);
@@ -65,11 +79,7 @@ public class DAOWritter {
 	}
 	
 	
-//	public void setFileName(String fileName) {
-//		this.fileName = fileName;
-//	}
-	
-	
+	// close of connection
 	public void close() {
 		try {
 			connection.close();

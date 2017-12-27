@@ -8,21 +8,32 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import system.ua.roman.configure.DBConnector;
 import system.ua.roman.entity.Disease;
+import system.ua.roman.entity.NoInformationException;
 import system.ua.roman.entity.Walker;
 
-@Service
-public class DBWalker implements Walker {
-	// private String diaseName;
-	// private String diaseContext;
+/**
+ * @author Pomeo
+ *
+ * class for getting information  of Disease from  DB
+ *
+ * class is Spring bean 
+ */
 
+
+@Component
+public class DBWalker implements Walker {
+
+	@Autowired
 	private Disease disease;
 
 	private Connection connection;
 
+	// call of constructor creates DB connection used JDBC 
 	public DBWalker() {
 		DBConnector connector = DBConnector.getInstanse();
 		System.out.println("connector is create");
@@ -37,11 +48,19 @@ public class DBWalker implements Walker {
 		}
 	}
 
-	@Override
-	public Disease walk(String diase) throws Exception {
+	
+	/* 
+	*  parameter diase - a title of the Disease, the  information about which  we  want to get
+	*  method gets information from table  "disease" in DB.
+	*  the console outputs are  for control
+	*  
+	*   when there isn't information in table method casts an exception, it must be processed in the calling method
+	*/
 
+	@Override
+	public Disease walk(String diase) throws NoInformationException {
+	//	Disease disease = new Disease();
 		try (Statement statement = this.connection.createStatement()) {
-			disease = new Disease();
 			System.out.println("create dis in method walk");
 			System.out.println("statement is create");
 			ResultSet rs = statement
@@ -56,16 +75,16 @@ public class DBWalker implements Walker {
 					disease.setDiseas(diase);
 				}
 			} else {
-				throw new Exception("There is not that Diases in BD");
+				throw new NoInformationException();
 			}
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-
 		return disease;
 	}
 
+	//method returns   List of titles of  diseases that are in DB  table  
 	public List<String> allDisease(){
 		List<String> list  = new ArrayList<String>();
 		try (Statement statement = this.connection.createStatement()){
@@ -79,7 +98,7 @@ public class DBWalker implements Walker {
 		return list;
 	}
 	
-	
+	// close DB connection
 	public void close() {
 		try {
 			connection.close();

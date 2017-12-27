@@ -1,9 +1,21 @@
 package system.ua.roman.entity;
 
-public class Disease implements Entity{
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
-	private String diseas = "d";
-	private String context = "c";
+/**
+ * @author Pomeo
+ *		Base entity which contains title and description a Disease
+ *		have 2 field, which are private and respectively have getters and setters.
+ */
+
+@Component
+@Scope("prototype")
+public class Disease {
+	
+	//these initializations are only for debugging at design time
+	private String disease = "NoN";
+	private String context = "NoN";
 	
 	public Disease() {	
 		System.out.println("disease is create");
@@ -11,15 +23,15 @@ public class Disease implements Entity{
 	
 	public Disease(String diseas, String context) {
 		this.context = context;
-		this.diseas = diseas;	
+		this.disease = diseas;	
 	}
 
 	public String getDiseas() {
-		return diseas;
+		return disease;
 	}
 
 	public void setDiseas(String diseas) {
-		this.diseas = diseas;
+		this.disease = diseas;
 	}
 
 	public String getContext() {
@@ -30,9 +42,14 @@ public class Disease implements Entity{
 		this.context = context;
 	}
 
+	
+	/*
+	 * method for output to the console information about a  Disease during development
+	 * 
+	*/
 	@Override
 	public String toString() {
-		return "Disease [diseas=" + diseas + ", context=" + context + "]";
+		return "Disease [diseas=" + disease + ", context=" + context + "]";
 	}
 	
 	
