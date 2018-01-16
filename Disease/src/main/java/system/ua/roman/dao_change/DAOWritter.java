@@ -19,6 +19,7 @@ import system.ua.roman.configure.DBConnector;
 import system.ua.roman.entity.Writter;
 
 
+
 /**
  * @author Pomeo
  *
@@ -55,6 +56,7 @@ public class DAOWritter implements Writter{
 	public void writte( String fileName) {
 		File file = new File("C:\\Tools\\Disease\\" + fileName+ ".txt");
 		try(BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file), Charset.forName("UTF-8"))); 
+				
 				PreparedStatement st =  this.connection.prepareStatement("INSERT INTO disease (name, context) values (?,?)")) {
 			
 			long size = file.length();
