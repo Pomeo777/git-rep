@@ -1,0 +1,31 @@
+package ua.roman.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import ua.roman.model.Disease;
+import ua.roman.repository.DiseaseRepository;
+
+@Service
+public class DiseaseService {
+	@Autowired
+	DiseaseRepository repository;
+	
+//	private static List<Disease> list = new ArrayList<Disease>();
+//	static{
+//		
+//		list.add(new Disease(1, "colitis", "colitis"));
+//		list.add(new Disease(2,"pain", "pain"));
+//		
+//	}
+	
+	public List<Disease> findAll() {
+		
+		return repository.findAll();
+	}
+
+	
+}

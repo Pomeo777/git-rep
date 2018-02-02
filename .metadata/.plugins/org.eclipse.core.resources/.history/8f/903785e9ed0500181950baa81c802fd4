@@ -1,0 +1,24 @@
+package ua.roman;
+
+public class Formula {
+
+	public static void main(String[] args) {
+		
+		System.out.println(coord(50.51108333));
+
+	}
+
+	
+	public static String coord(double ddd){
+		String  s = null; 
+		
+		int dd = (int) ddd;
+		double remainder = ddd-dd;
+		int mm = (int)((remainder)*60);
+		int ss = (int) ((remainder)*60 - mm);
+		
+		s= dd + "-" + mm + "-" + ss;
+		
+		return s;
+	}
+}

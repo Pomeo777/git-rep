@@ -1,0 +1,5 @@
+package ua.roman.service;
+
+public class DiseaseService {
+
+}

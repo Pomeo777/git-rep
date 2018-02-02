@@ -1,0 +1,46 @@
+package ua.roman.boot;
+
+import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+ import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import ua.roman.controllers.DiseaseController;
+import ua.roman.model.Disease;
+import ua.roman.repository.DisRepository;
+import ua.roman.service.DiseaseService;
+
+
+@RunWith(MockitoJUnitRunner.class)
+public class DiseaseControllerTest {
+	@Mock
+	private DiseaseService service;
+	@Mock
+	private DisRepository repository;
+	
+    @InjectMocks
+	DiseaseController controller;
+	 
+	 
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@Test
+	public void getAllListDiseases(){
+		//Mockito.when(service.findAll()).thenReturn(ArrayList<Disease>());
+		
+		List<Disease> diseaseList = controller.allDisease();
+		
+		Mockito.verify(controller).allDisease();
+	}
+
+}

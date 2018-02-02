@@ -1,0 +1,20 @@
+package ua.roman.repository;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import ua.roman.model.Disease;
+
+//@Repository
+public class DiseaseRepository  {
+	@Autowired
+	DisRepository rep;
+	
+	public List<Disease> findAll(){
+		
+		return (List<Disease>) rep.findAll();
+	}
+}

@@ -1,0 +1,6 @@
+server.port=8099
+spring.mandatory-file-encoding=UTF-8
+spring.datasource.url=jdbs:postgresql://127.0.0.1:5432/MyDB
+spring.datasource.username=postgres
+ spring.datasource.password=Eliot12334   
+spring.jpa.hibernate.ddl-auto=create-drop

@@ -1,0 +1,22 @@
+package ua.roman.boot;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@SpringBootApplication
+@Controller
+public class DiseApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DiseApplication.class, args);
+	}
+	
+	
+	@RequestMapping("/disease")
+	public String sayHello(){
+		
+		return "hello";
+	}
+}

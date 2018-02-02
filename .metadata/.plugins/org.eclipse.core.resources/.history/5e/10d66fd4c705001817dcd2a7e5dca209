@@ -1,0 +1,9 @@
+package ua.roman.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import ua.roman.model.Disease;
+
+public interface DisRepository  extends CrudRepository<Disease, String>{
+
+}

@@ -1,0 +1,10 @@
+package ua.roman.model;
+
+public class Disease {
+
+	private int id;
+	private String name;
+	private String context;
+	
+	
+}

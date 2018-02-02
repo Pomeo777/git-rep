@@ -1,0 +1,5 @@
+package ua.roman.controllers;
+
+public class DiseaseController {
+
+}

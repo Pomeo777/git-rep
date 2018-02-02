@@ -1,0 +1,30 @@
+package ua.roman.model;
+
+public class Disease {
+
+	private int id;
+	private String name;
+	private String context;
+	
+	public Disease(int id, String name, String context) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.context = context;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getContext() {
+		return context;
+	}
+	
+	
+	
+}

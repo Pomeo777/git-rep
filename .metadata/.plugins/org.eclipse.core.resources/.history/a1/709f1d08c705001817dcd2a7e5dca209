@@ -1,0 +1,28 @@
+package ua.roman.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import ua.roman.model.Disease;
+
+@Service
+public class DiseaseService {
+	
+	private static List<Disease> list = new ArrayList<Disease>();
+	static{
+		
+		list.add(new Disease(1, "colitis", "colitis"));
+		list.add(new Disease(2,"pain", "pain"));
+		
+	}
+	
+	public List<Disease> findAll() {
+		
+		System.out.println("In method findAll() " + list.get(0).getName());
+		return list;
+	}
+
+	
+}
