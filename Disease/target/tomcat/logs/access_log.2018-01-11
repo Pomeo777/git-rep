@@ -1,8 +1,0 @@
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:33:38 +0200] "GET /user-system HTTP/1.1" 302 - http-bio-8080-exec-1 0
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:33:39 +0200] "GET /user-system/ HTTP/1.1" 200 268 http-bio-8080-exec-3 1225
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:33:39 +0200] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:33:53 +0200] "GET /user-system/hello HTTP/1.1" 404 949 http-bio-8080-exec-5 20
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:34:03 +0200] "GET /user-system/hello/ HTTP/1.1" 404 949 http-bio-8080-exec-9 4
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:34:08 +0200] "GET /user-system/hello/ask/ HTTP/1.1" 405 1045 http-bio-8080-exec-9 8
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:34:29 +0200] "GET /user-system/hello/info HTTP/1.1" 200 299 http-bio-8080-exec-9 357
-0:0:0:0:0:0:0:1 - - [11/Jan/2018:12:34:38 +0200] "GET /user-system/ HTTP/1.1" 200 268 http-bio-8080-exec-2 4
