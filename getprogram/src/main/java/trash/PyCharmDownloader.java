@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import dovnloaders.Downloader;
 
-public class PyCharmDownloader implements Downloader{
+public class PyCharmDownloader implements Download{
 
 	private WebDriver driver;
 	private String OSname;

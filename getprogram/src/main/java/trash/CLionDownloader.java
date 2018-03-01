@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import dovnloaders.Downloader;
 
-public class CLionDownloader implements Downloader{
+public class CLionDownloader implements Download{
 	private WebDriver driver;
 	private String OSname; // maybe will be need if the browser don't check system
 	

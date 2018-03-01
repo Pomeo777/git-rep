@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import dovnloaders.Downloader;
 
-public class PhpStormDownloader implements Downloader{
+public class PhpStormDownloader implements Download{
 
 	private WebDriver driver;
 	private String OSname;

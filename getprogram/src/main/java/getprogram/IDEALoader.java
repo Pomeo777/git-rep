@@ -1,99 +1,90 @@
 package getprogram;
 
+import initial.DriverExtractor;
 import initial.Initialiser;
-import installer.Installer;
+import installer.WindowsInstaller;
+import installer.LinuxInstaller;
+import trash.DLoader;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import deleter.ExeDeleter;
+import deleter.InstalFileDeleter;
+import deleter.LinDeleter;
 import deleter.WinDeleter;
-import dovnloaders.DLoader;
+import dovnloaders.ChromeDownloader;
+import dovnloaders.Download;
+import dovnloaders.Downloader;
 
 
 
 public class IDEALoader {
 
-//	DriverExtractor driverExtractor = new DriverExtractor();
-	DLoader dLoader;
-	String OSname = System.getProperty("os.name").toLowerCase();
-//	String driverName, programName, url;
-//	Properties properties = new Properties();
-	//String[] parameters;
+
+	Download dLoader;
+	static String OSname = System.getProperty("os.name").toLowerCase().substring(0, 3);
 	FileChecker fileChecker = new FileChecker();
-//	DriverMaker driverMaker = new DriverMaker();
-//	WebDriver webDriver;
-//	ExeFinder exeFinder;
-	Installer installer;
+	LinuxInstaller installer;
 	Initialiser initialiser;
-	WinDeleter winDeleter;
+	InstalFileDeleter insDeleter;
 	ExeDeleter exeDeleter;
+	
 	public static void main(String[] args)   {
 		
 		//TODO
 		
 		
-	//	System.setProperty("webdriver.firefox.marionette", "???????????");
 		
 		
 		IDEALoader loader = new IDEALoader();
-	//	System.out.println(loader.driverExtractor.extract());
-		
-//		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-//		String res = classLoader.getResource("Drivers/chromedriver.exe").getFile();
-		
-	//	System.setProperty("webdriver.chrome.driver", loader.driverExtractor.extract());
-		
-	
-		
-		
 
-
-//		loader.getParametrs(loader.parameters);
-//		loader.driverMaker.setDriver(loader.driverName);
-//		loader.webDriver = loader.driverMaker.getDriver();
-
-		
-		loader.initialiser = new Initialiser(args);
+			loader.initialiser = new Initialiser(args, OSname);
 		
 			
 		System.out.println("Initial");
 		
-		loader.winDeleter = new WinDeleter(loader.initialiser.getProgramName());
+//		loader.insDeleter = new LinDeleter(loader.initialiser.getProgramName());
+//		
+//			try {
+//				loader.insDeleter.delete();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+	
+		
 		
 		try {
-			System.out.println(loader.winDeleter.delete());
-		} catch (FileNotFoundException e) {
-			System.out.println("Program is not insts");
-		}
-		
-		
-		loader.dLoader = new DLoader(loader.initialiser.getDriver(), loader.OSname, loader.initialiser.getUrl());
-		System.out.println("loader create");
-		try {
-			loader.dLoader.download();
-		} catch (InterruptedException e) {
+			loader.dLoader = new Download(loader.initialiser.getDriver(),  loader.initialiser.getUrl(), loader.OSname, loader.initialiser.getDriverName());
+		} catch (IOException e) {
+			
 			e.printStackTrace();
 		}
+		System.out.println("loader create");
+		loader.dLoader.download();
          System.out.println("load start");
 		
-		boolean noFile = true;
-		while(noFile){
-			System.out.println("into while");
-			noFile = loader.fileChecker.checkAndSleep(loader.initialiser.getProgramName());
-		}
-		loader.dLoader.closeBrowser();
-		loader.installer = new Installer(loader.initialiser.getProgramName());
-		try {
-			loader.installer.goInstall();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		loader.exeDeleter = new ExeDeleter(loader.initialiser.getProgramName());
-		try {
-			loader.exeDeleter.goExeDelet();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		boolean noFile = true;
+//		while(noFile){
+//			System.out.println("into while");
+//			noFile = loader.fileChecker.checkAndSleep(loader.initialiser.getProgramName());
+//		}
+//		loader.dLoader.getDownloader().closeBrowser();
+		
+//		loader.installer = new LinuxInstaller(loader.initialiser.getProgramName());
+//		try {
+//			loader.installer.goInstall();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} 
+		
+//		loader.exeDeleter = new ExeDeleter(loader.initialiser.getProgramName());
+//		try {
+//			loader.exeDeleter.goExeDelet();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 
 	}
