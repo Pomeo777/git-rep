@@ -5,6 +5,6 @@ public interface Downloader {
 
 
 	void closeBrowser();
-	String checkSystem(String OSname);
+//	String checkSystem(String OSname);
 	void download();
 }

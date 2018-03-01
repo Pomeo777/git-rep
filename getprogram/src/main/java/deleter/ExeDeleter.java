@@ -9,6 +9,7 @@ public class ExeDeleter {
 	
 	private String programName;
 	private FileChecker fileChecker = new FileChecker();
+	
 	public ExeDeleter(String programName){
 		this.programName = programName;
 		

@@ -1,4 +1,4 @@
-package dovnloaders;
+package trash;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,11 +23,11 @@ public DLoader(WebDriver webDriver, String OSname, String url) {
 
 
 	public void download() throws InterruptedException{
-		if(this.url.contains("=")){
-		driver.get(this.url+checkSystem(OSname));
-		}else{
+//		if(this.url.contains("=")){
+//		driver.get(this.url+checkSystem(OSname));
+//		}else{
 		driver.get(url);
-		}
+//		}
 		Thread.sleep(5000);
 		//List<WebElement> downloadElements = driver.findElements(By.linkText("Download"));
 	//	WebElement element = downloadElements.get(1);
@@ -40,18 +40,18 @@ public DLoader(WebDriver webDriver, String OSname, String url) {
 		driver.close();
 	}
 	
-	public String checkSystem(String OSname){
-		String systemname = "";
-		if(OSname.indexOf("win")>=0){
-			systemname = "windows";
-		}else if(OSname.indexOf("nix") >= 0 || OSname.indexOf("nux") >= 0 || OSname.indexOf("aix") > 0){
-			systemname = "linux";
-		
-		}else if(OSname.indexOf("mac") >= 0){
-			systemname = "mac";
-		}
-		return systemname;
-	}
+//	public String checkSystem(String OSname){
+//		String systemname = "";
+//		if(OSname.indexOf("win")>=0){
+//			systemname = "windows";
+//		}else if(OSname.indexOf("nix") >= 0 || OSname.indexOf("nux") >= 0 || OSname.indexOf("aix") > 0){
+//			systemname = "linux";
+//		
+//		}else if(OSname.indexOf("mac") >= 0){
+//			systemname = "mac";
+//		}
+//		return systemname;
+//	}
 	
 
 

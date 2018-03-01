@@ -5,18 +5,19 @@ import java.io.FileNotFoundException;
 
 public class FileChecker {
 
-	String filedir = System.getProperty("user.home")+"\\Downloads\\";
+	String filedir = System.getProperty("user.home")+File.separator+"Downloads"+File.separator;
 	
 	public boolean check(String programName){
 		boolean check = false;
 
 		File dir = new File(filedir);
-		
+		System.out.println(filedir);
 		File[] dirCont = dir.listFiles();
 		
 		for(int i = 0; i<dirCont.length; i++){
 	
-			if(dirCont[i].getName().toLowerCase().contains(programName)){
+			if(dirCont[i].getName().toLowerCase().contains(programName) && 
+					!(dirCont[i].getName().toLowerCase().contains("crdown") | dirCont[i].getName().toLowerCase().contains("part"))){
 				check = true;
 				break;
 			}

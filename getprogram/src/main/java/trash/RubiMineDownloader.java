@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import dovnloaders.Downloader;
 
-public class RubiMineDownloader  implements Downloader{
+public class RubiMineDownloader  implements Download{
 
 	private WebDriver driver;
 	private String OSname;

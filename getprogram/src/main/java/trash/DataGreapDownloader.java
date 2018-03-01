@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 import dovnloaders.Downloader;
 
-public class DataGreapDownloader  implements Downloader{
+public class DataGreapDownloader  implements Download{
 
 	private WebDriver driver;
 	private String OSname;

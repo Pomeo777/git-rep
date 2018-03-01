@@ -11,13 +11,15 @@ import org.openqa.selenium.WebDriver;
 public class Initialiser {
 
 	private DriverMaker driverMaker;
-	private DriverExtractor driverExtractor;
-	private String  driverName, programName, url; 
+	private ExtractDriver extractDriver;
+	private String  driverName, programName, url, OSname; 
 	private String[] args; 
 	private Properties properties;
 	
-	public Initialiser(String[] args){
+	public Initialiser(String[] args, String OSname){
 		this.args = args;
+		this.OSname = OSname;
+		//this.driverExtractor = driverExtractor;
 		getProperties();	
 	}
 	
@@ -54,12 +56,16 @@ public class Initialiser {
 		}
 	}
 
-	public WebDriver getDriver(){
+	public WebDriver getDriver() throws IOException{
 		driverMaker = new DriverMaker();
-		driverExtractor  = new DriverExtractor();
-		driverExtractor.extract(driverName);
+//		if(OSname.equals("win")){
+//			driverExtractor = new WindowsDriverExtractor();
+//		}else if(OSname.equals("lin")) {
+//			driverExtractor = new LinuxDriverExtractor();
+//		}
+//		driverExtractor.extract(driverName);
+		extractDriver = new ExtractDriver(OSname, driverName);
 		driverMaker.setDriver(driverName);
-		
 		
 		return driverMaker.getDriver();
 	}
@@ -71,6 +77,9 @@ public class Initialiser {
 
 	public String getUrl() {
 		return url;
+	}
+	public String getDriverName() {
+		return driverName;
 	}
 	
 }
