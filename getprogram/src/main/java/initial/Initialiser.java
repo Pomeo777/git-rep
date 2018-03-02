@@ -1,5 +1,6 @@
 package initial;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,7 +28,8 @@ public class Initialiser {
 	public void getProperties(){
 		try{
 			properties = new Properties();
-		
+			File f =  new File(this.getClass().getClassLoader().getResource("driver.properties").getFile());
+			System.out.println(f.getAbsolutePath());
 			properties.load(new FileReader(this.getClass().getClassLoader().getResource("driver.properties").getFile()));
 
 	if(args.length == 1 ){

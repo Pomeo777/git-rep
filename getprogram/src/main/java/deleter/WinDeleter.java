@@ -16,15 +16,22 @@ public class WinDeleter extends InstalFileDeleter{
 	
 	public String checkProgram() {
 	String fullPathName = null;
-		fullPathName = getFiles(path, programName)+"\\bin\\";
-		fullPathName = getFiles(fullPathName, uninstal);
+		fullPathName =  getFiles(path, programName);
+	
+		if(fullPathName != null) {
+			fullPathName = fullPathName + "\\bin\\";
+			fullPathName = getFiles(fullPathName, uninstal);
+		}
 		return fullPathName;
 	}
+	
+	
+	
 	
 	public void delete() {
 		
 		String fileName = checkProgram();
-
+		if(fileName != null){
 	//	ProcessBuilder processBuilder = new ProcessBuilder(fileName);
 		
 		try {
@@ -32,12 +39,15 @@ public class WinDeleter extends InstalFileDeleter{
 			 Process process = Runtime.getRuntime().exec(fileName);
 			process.waitFor();
 
-		} catch (IOException | InterruptedException e) {
+		} catch (IOException  e) {
 
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		
+		}	
 		
 	}
 	

@@ -1,8 +1,8 @@
 package installer;
 
-import getprogram.FileChecker;
-
 import java.io.IOException;
+
+import getprogram.FileChecker;
 
 public class WindowsInstaller implements Installer{
 private String programName;
@@ -22,7 +22,7 @@ public WindowsInstaller(String programName){
 		Process process = processBuilder.start();
 		process.waitFor();
 
-	} catch (IOException | InterruptedException e) {
+	} catch (IOException  e) {
 
 		e.printStackTrace();
 	}
