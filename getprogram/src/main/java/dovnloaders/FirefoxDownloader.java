@@ -7,10 +7,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FirefoxDownloader implements Downloader{
 
@@ -24,29 +20,21 @@ public class FirefoxDownloader implements Downloader{
 		this.url = url;
 }
 	
-	@Override
+
 	public void closeBrowser() {
 
 		driver.close();
 	}
 
-	@Override
+	
 	public void download() {
-//		if(OSname.equals("win")) {
-//		FirefoxProfile profile = new FirefoxProfile();
-//		profile.setPreference("browser.helperApps.neverAsk.saveToDisk", 
-//			    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;"); 
-//	 
-//		profile.setPreference( "browser.download.manager.showWhenStarting", false );
-//		profile.setPreference( "pdfjs.disabled", true );
-//	
-//		}
+
 		driver.get(url);
 		 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		

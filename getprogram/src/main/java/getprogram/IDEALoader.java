@@ -1,5 +1,11 @@
 package getprogram;
 
+
+import initial.Initialiser;
+import installer.Installer;
+import installer.LinuxInstaller;
+import installer.WindowsInstaller;
+
 import java.io.IOException;
 
 import deleter.ExeDeleter;
@@ -7,10 +13,7 @@ import deleter.InstalFileDeleter;
 import deleter.LinDeleter;
 import deleter.WinDeleter;
 import dovnloaders.Download;
-import initial.Initialiser;
-import installer.Installer;
-import installer.LinuxInstaller;
-import installer.WindowsInstaller;
+
 
 
 
@@ -20,12 +23,16 @@ public class IDEALoader {
 	Download dLoader;
 	static String OSname = System.getProperty("os.name").toLowerCase().substring(0, 3);
 	FileChecker fileChecker = new FileChecker();
+
 	Installer installer;
+
 	Initialiser initialiser;
 	InstalFileDeleter insDeleter;
 	ExeDeleter exeDeleter;
 	
+
 	public static void main(String[] args) throws IOException   {
+
 		
 		//TODO
 		
@@ -39,6 +46,7 @@ public class IDEALoader {
 			
 		System.out.println("Initial");
 		
+
 		if(OSname.equals("lin")){
 			 loader.insDeleter = new LinDeleter(loader.initialiser.getProgramName());
 			loader.installer = new LinuxInstaller(loader.initialiser.getProgramName());
@@ -46,10 +54,7 @@ public class IDEALoader {
 			 loader.insDeleter = new WinDeleter(loader.initialiser.getProgramName());
 			loader.installer = new WindowsInstaller(loader.initialiser.getProgramName());
 		}
-		
-		
 
-	
 	    loader.insDeleter.delete();
 
 	

@@ -14,11 +14,13 @@ public abstract class InstalFileDeleter {
 	
 	
 	public String getFiles(String dirName, String progname) {
+
 		
 		String filePath = null;
 		System.out.println(dirName);
 		File dir = new File(dirName);
 	    System.out.println(dir.exists());
+
 		if(dir.exists()) {
 		File[] dirCont = dir.listFiles();
 		for(int i = 0; i<dirCont.length; i++){

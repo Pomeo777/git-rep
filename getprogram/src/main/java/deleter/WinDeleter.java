@@ -25,9 +25,7 @@ public class WinDeleter extends InstalFileDeleter{
 		return fullPathName;
 	}
 	
-	
-	
-	
+
 	public void delete() {
 		
 		String fileName = checkProgram();
@@ -40,15 +38,14 @@ public class WinDeleter extends InstalFileDeleter{
 			process.waitFor();
 
 		} catch (IOException  e) {
-
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		}	
 		
+
 	}
 	
 	

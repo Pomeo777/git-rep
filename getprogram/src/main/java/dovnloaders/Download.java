@@ -15,7 +15,6 @@ public class Download {
 		this.url = url;
 		this.OSname = OSname;
 		this.driverName = driverName.toLowerCase().substring(0, 3);
-
 	}
 	
 	public void download() {
@@ -33,7 +32,7 @@ public class Download {
 		System.out.println("We dont nave browser witch you use");
 	}
 	}
-	
+
 	public Downloader getDownloader() {
 		
 		return this.downloader;
