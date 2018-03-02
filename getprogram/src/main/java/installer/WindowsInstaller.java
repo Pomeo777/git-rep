@@ -1,9 +1,11 @@
 package installer;
 
 
-import getprogram.FileChecker;
+
 
 import java.io.IOException;
+
+import getprogram.FileChecker;
 
 
 public class WindowsInstaller implements Installer{
@@ -16,7 +18,7 @@ public WindowsInstaller(String programName){
 }
 
 @Override
-	public void goInstall() throws Exception{
+	public void goInstall() throws Exception {
 		String path = fileChecker.findFile(programName);
 		ProcessBuilder processBuilder = new ProcessBuilder(path);
 	
@@ -25,7 +27,7 @@ public WindowsInstaller(String programName){
 		process.waitFor();
 
 
-	} catch (IOException | InterruptedException e) {
+	} catch (IOException  e) {
 
 
 		e.printStackTrace();

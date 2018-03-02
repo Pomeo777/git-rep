@@ -24,6 +24,7 @@ public abstract class InstalFileDeleter {
 		if(dir.exists()) {
 		File[] dirCont = dir.listFiles();
 		for(int i = 0; i<dirCont.length; i++){
+			System.out.println(dirCont[i].getName().toLowerCase());
 			if(dirCont[i].getName().toLowerCase().startsWith(progname)){
 				filePath = dirCont[i].getAbsolutePath();
 				break;

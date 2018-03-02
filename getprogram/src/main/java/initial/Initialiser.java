@@ -31,10 +31,10 @@ public class Initialiser {
 	public void getProperties(){
 		try{
 			properties = new Properties();
-			File f =  new File(this.getClass().getClassLoader().getResource("driver.properties").getFile());
-			System.out.println(f.getAbsolutePath());
-			properties.load(new FileReader(this.getClass().getClassLoader().getResource("driver.properties").getFile()));
-
+		
+			//properties.load(new FileReader(this.getClass().getClassLoader().getResource("driver.properties").getFile()));
+			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+			properties.load(new FileReader(classloader.getResource("driver.properties").getFile()));
 	if(args.length == 1 ){
 			driverName = properties.getProperty("drivername");
 			programName = args[0].toLowerCase().substring(0, 3);
@@ -44,8 +44,9 @@ public class Initialiser {
 		driverName = args[1];
 	
 		properties.setProperty("drivername", driverName);
-		properties.store(new FileWriter(this.getClass().getClassLoader().getResource("driver.properties").getFile()), null);
 		
+		//properties.store(new FileWriter(this.getClass().getClassLoader().getResource("driver.properties").getFile()), null);
+		properties.store(new FileWriter(classloader.getResource("driver.properties").getFile()), null);
 		programName = args[0].toLowerCase().substring(0, 3);
 
 		url = properties.getProperty(programName);
