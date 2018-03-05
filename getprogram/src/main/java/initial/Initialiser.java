@@ -1,12 +1,8 @@
 package initial;
 
-import initial.DriverMaker;
-import initial.ExtractDriver;
-
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
 
@@ -32,9 +28,8 @@ public class Initialiser {
 		try{
 			properties = new Properties();
 		
-			//properties.load(new FileReader(this.getClass().getClassLoader().getResource("driver.properties").getFile()));
-			ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-			properties.load(new FileReader(classloader.getResource("driver.properties").getFile()));
+			//properties.load(new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream("./driver.properties")));
+			properties.load(new FileInputStream("./driver.properties"));
 	if(args.length == 1 ){
 			driverName = properties.getProperty("drivername");
 			programName = args[0].toLowerCase().substring(0, 3);
@@ -44,9 +39,7 @@ public class Initialiser {
 		driverName = args[1];
 	
 		properties.setProperty("drivername", driverName);
-		
-		//properties.store(new FileWriter(this.getClass().getClassLoader().getResource("driver.properties").getFile()), null);
-		properties.store(new FileWriter(classloader.getResource("driver.properties").getFile()), null);
+		properties.store(new FileOutputStream("./driver.properties"), null);
 		programName = args[0].toLowerCase().substring(0, 3);
 
 		url = properties.getProperty(programName);

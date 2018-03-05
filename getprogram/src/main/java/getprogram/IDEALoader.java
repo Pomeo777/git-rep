@@ -44,7 +44,7 @@ public class IDEALoader {
 			loader.initialiser = new Initialiser(args, OSname);
 		
 			
-		System.out.println("Initial");
+		System.out.println(OSname);
 		
 
 		if(OSname.equals("lin")){
@@ -60,14 +60,14 @@ public class IDEALoader {
 	
 		
 		
-//		try {
-//			loader.dLoader = new Download(loader.initialiser.getDriver(),  loader.initialiser.getUrl(), loader.OSname, loader.initialiser.getDriverName());
-//		} catch (IOException e) {
-//			
-//			e.printStackTrace();
-//		}
-//		System.out.println("loader create");
-//		loader.dLoader.download();
+		try {
+			loader.dLoader = new Download(loader.initialiser.getDriver(),  loader.initialiser.getUrl(), loader.OSname, loader.initialiser.getDriverName());
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		System.out.println("loader create");
+		loader.dLoader.download();
 //         System.out.println("load start");
 //		
 //		boolean noFile = true;
