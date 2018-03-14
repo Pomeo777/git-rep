@@ -22,7 +22,7 @@ public class Initialiser {
 	
 	public Initialiser(String[] args, String OSname){
 		this.args = args;
-		log.info("Initialisation with parameters {} , {} ", args[0], args[1]);
+		log.info("Initialisation with parameters {} , {} ", args[0]);
 		this.OSname = OSname;
 		log.info("OS is {}", OSname);
 		//this.driverExtractor = driverExtractor;
